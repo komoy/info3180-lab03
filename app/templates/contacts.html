@@ -1,37 +1,54 @@
-<div class="container">
+{% extends 'base.html' %}
+
+{% block main %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+ <h2> Contact Form</h2
     
-    <div>
-        <form method='POST' action='/contacts'>
+    
+        <form method='POST' action="{{url_for('contacts')}}" id="form-area">
             {{ form.csrf_token }}
-           <div>
-                {{ form.name.label }}
+            
+            <div class="form">
+        <span id="first">Fill in this form to contact the site owners.</span>
+    </div>
+           <div class='form'>
+               <label for="name">  {{ form.name.label }}<span class="required">(Required)</span></label>
+               
+               <span class ="info">Please enter your full name</span>
                 
                {{form.name(size=20) }}
            </div>
            
-            <div> 
-            {{ form.email.label }}
-             {{form.email(size=20) }}
-                
-            </div>
-            <div> 
-            {{ form.subject.label }}
-            {{form.subject(size=20) }}
-            </div>             
-             {{ form.message.label }}
-            {{form.message(size=20) }}
+            <div class='form'> 
             
-            <div>
-                
+          <label for="email"> {{ form.email.label }}<span class="required">(Required)</span></label>
+          
+           <span class ="info">Please enter your email address</span>
+           
+             {{form.email( min=6,size=50) }}
                 
             </div>
             
+           <div class="form">
+        <label for="subject">{{form.subject.label}} <span class="required">(Required)</span></label>
+        
+        <span class ="info">Please enter a subject for your message</span>
+        
+        {{form.subject(size=20, id="subject")}}
+    </div>
+    <div class="form">
+        <label for="message">{{form.message.label}} <span class="required">(Required)</span></label>
+        
+        <span class ="info" >Please enter the message you would like to send</span>
+        
+        {{form.message()}}
+    </div>
            
 <div>
-         <button type="submit">Submit<button>
+         <button type="submit" id="btn">Submit<button>
 </div>
         
         </form>
     </div>
     
-</div>  
+{% endblock %}
