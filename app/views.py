@@ -38,10 +38,8 @@ def contacts():
             msg = Message(form.subject.data, sender=(form.name.data,form.email.data), recipients=["to@example.com"])
         
             msg.body = form.message.data
-            
             mail.send(msg)
-            
-            flash("SUCCESSFULLY SENT","success")
+            flash("Message successfully sent","success")
             
             return redirect(url_for("home"))
     """Render the website's contacts page."""

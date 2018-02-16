@@ -1,54 +1,22 @@
 {% extends 'base.html' %}
 
 {% block main %}
- <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
- <h2> Contact Form</h2
+    <h2>Contact Form</h2>
     
-    
-        <form method='POST' action="{{url_for('contacts')}}" id="form-area">
-            {{ form.csrf_token }}
-            
-            <div class="form">
-        <span id="first">Fill in this form to contact the site owners.</span>
-    </div>
-           <div class='form'>
-               <label for="name">  {{ form.name.label }}<span class="required">(Required)</span></label>
-               
-               <span class ="info">Please enter your full name</span>
-                
-               {{form.name(size=20) }}
-           </div>
-           
-            <div class='form'> 
-            
-          <label for="email"> {{ form.email.label }}<span class="required">(Required)</span></label>
-          
-           <span class ="info">Please enter your email address</span>
-           
-             {{form.email( min=6,size=50) }}
-                
-            </div>
-            
-           <div class="form">
-        <label for="subject">{{form.subject.label}} <span class="required">(Required)</span></label>
-        
-        <span class ="info">Please enter a subject for your message</span>
-        
-        {{form.subject(size=20, id="subject")}}
-    </div>
-    <div class="form">
-        <label for="message">{{form.message.label}} <span class="required">(Required)</span></label>
-        
-        <span class ="info" >Please enter the message you would like to send</span>
-        
-        {{form.message()}}
-    </div>
-           
-<div>
-         <button type="submit" id="btn">Submit<button>
-</div>
-        
-        </form>
-    </div>
-    
+    <form method="post" action="{{ url_for('contacts') }}">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.name.label }} {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label }} {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
+        </div>
+        <div class="form-group">
+            {{ form.subject.label }} {{ form.subject(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.message.label }} {{ form.message(class="form-control") }}
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}
