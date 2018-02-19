@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'party hard'
 app.config['MAIL_SERVER'] = 'smtp.mailtrap.io'
 app.config['MAIL_PORT'] = '2525'
-app.config['MAIL_USERNAME'] = 'e3cff7d539cd09'
-app.config['MAIL_PASSWORD'] = 'd3e7e261e25d10'
+app.config['MAIL_USERNAME'] = 
+app.config['MAIL_PASSWORD'] = 
 mail = Mail(app)
 from app import views
